@@ -25,7 +25,7 @@ public class TBExpt {
     TextBlock centered_test = new BoxedBlock(new Centered(new TextLine("Hello"), 7));
     TextBlock right_test = new BoxedBlock(new RightJustified(new TextLine("rigth justified"), 21));
     TextBlock VFlip_test = new VerticallyFlipped(new VComposition(centered_test, right_test));
-    TextBlock HFlip_test = new HorizontallyFlipped(new TextLine("hello"));
+    TextBlock HFlip_test = new HorizontallyFlipped(new BoxedBlock(new TextLine("hello")));
 
 
 
