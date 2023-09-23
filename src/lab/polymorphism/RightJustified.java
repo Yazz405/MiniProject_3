@@ -1,6 +1,6 @@
 package lab.polymorphism;
 
-public class RightJustified implements TextBlock{
+public class RightJustified implements TextBlock {
     // +--------+------------------------------------------------------------
     // | Fields |
     // +--------+
@@ -12,39 +12,45 @@ public class RightJustified implements TextBlock{
     // | Constructors |
     // +--------------+
 
-    public RightJustified(TextBlock block, int width){
+    public RightJustified(TextBlock block, int width) {
 
         this.block = block;
         this.width = width;
-    }//RightJustified(TextBlock, int)
+    }// RightJustified(TextBlock, int)
 
     // +---------+-----------------------------------------------------------
     // | Methods |
     // +---------+
 
-    public String row(int i) throws Exception{
+    public String row(int i) throws Exception {
         int spaces = this.width - this.block.width();
         String result;
 
-        if (this.block.width() > this.width){
+        if (this.block.width() > this.width) {
             TextBlock help = new Truncated(this.block, this.width);
             return help.row(i);
-        }//if
+        } // if
         else {
             result = TBUtils.spaces(spaces).concat(this.block.row(i));
-        }//else
+        } // else
 
         return result;
 
-    }//row(int)
+    }// row(int)
 
     public int width() {
         return this.width;
-     } // width()
- 
-     public int height() {
-         return this.block.height();
-     } // height()
+    } // width()
 
-    
+    public int height() {
+        return this.block.height();
+    } // height()
+
+    /*
+     * checks to see if other is the same type as RightJustified
+     */
+    public boolean eqv(TextBlock other) {
+        return other instanceof RightJustified;
+    }// eqv(TextBlock)
+
 }// class RightJustified

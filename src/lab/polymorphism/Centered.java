@@ -2,7 +2,7 @@ package lab.polymorphism;
 
 import java.lang.String;
 
-public class Centered implements TextBlock{
+public class Centered implements TextBlock {
     // +--------+------------------------------------------------------------
     // | Fields |
     // +--------+
@@ -28,12 +28,11 @@ public class Centered implements TextBlock{
         int start = this.width - this.block.width();
         int spaces = start / 2;
         String result;
-        
 
-        if (this.block.width() > this.width){
+        if (this.block.width() > this.width) {
             TextBlock help = new Truncated(this.block, this.width);
             return help.row(i);
-        }//if
+        } // if
         else if ((start % 2) == 0) {
 
             result = TBUtils.spaces(spaces);
@@ -50,11 +49,18 @@ public class Centered implements TextBlock{
     }// row(int)
 
     public int width() {
-       return this.width;
+        return this.width;
     } // width()
 
     public int height() {
         return this.block.height();
     } // height()
+
+    /*
+     * checks to see if other is the same type as Centered
+     */
+    public boolean eqv(TextBlock other) {
+        return other instanceof Centered;
+    }// eqv(TextBlock)
 
 }// class Centered

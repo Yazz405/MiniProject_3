@@ -1,4 +1,5 @@
 package lab.polymorphism;
+
 public class Truncated implements TextBlock {
     // +--------+------------------------------------------------------------
     // | Fields |
@@ -22,9 +23,9 @@ public class Truncated implements TextBlock {
     // +---------+
 
     /*
-     * @pre 
+     * @pre
      */
-    public String row(int i) throws Exception{
+    public String row(int i) throws Exception {
         int height = this.height();
         int width = this.width;
 
@@ -33,12 +34,12 @@ public class Truncated implements TextBlock {
             throw new Exception("Invalid row " + i);
         } // if the row is invalid
 
-        if ((this.block.width() < width) || (this.block.width() == width)){
+        if ((this.block.width() < width) || (this.block.width() == width)) {
             return this.block.row(i);
-        }//if
+        } // if
         else {
             return this.block.row(i).substring(0, width);
-        }//else
+        } // else
 
     }// row(int)
 
@@ -50,4 +51,11 @@ public class Truncated implements TextBlock {
         return this.block.height();
     } // height()
 
-}//class Truncated
+    /*
+     * checks to see if other is the same type as Truncated
+     */
+    public boolean eqv(TextBlock other) {
+        return other instanceof Truncated;
+    }// eqv(TextBlock)
+
+}// class Truncated

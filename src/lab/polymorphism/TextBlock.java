@@ -29,4 +29,9 @@ public interface TextBlock {
    */
   public int width();
 
+  /*
+   * checks to see if the content of the two TextBlocks are equal
+   */
+  public boolean eqv(TextBlock other);
+
 } // interface TextBlock

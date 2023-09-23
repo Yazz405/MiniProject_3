@@ -69,4 +69,41 @@ public class TBUtils {
     return lotsOfSpaces.substring(0, len);
   } // spaces(int)
 
+  /*
+   * Two TextBlocks will be equal if their rows are equal
+   */
+  public static boolean equal(TextBlock t1, TextBlock t2) throws Exception{
+
+    //if the don't have the same amount of rows then they aren't the same
+    if(t1.height() != t2.height()){
+      return false;
+    }//if
+
+    //return false when you encounter a row where t1.row does not equal t2.row
+    for(int j = 0; j < t1.height(); j++){
+      if(!(t1.row(j).equals(t2.row(j)))){
+        return false;
+      }//if
+    }//for
+
+    return true;
+  }//equal(TextBlock, TextBlock)
+
+  /*
+   * Two TextBlocks are equal if they are built the same way
+   */
+  public static boolean eqv(TextBlock t1, TextBlock t2) {
+    return t1.eqv(t2);
+  }//eqv(TextBlock, TextBlock)
+
+  /*
+   * Two TextBlocks are equal if there are stored in the same memory location
+   */
+  public static boolean eq(TextBlock t1, TextBlock t2){
+    
+    return t1 == t2;
+  }//eq(TextBlock, TextBlock)
+
+
+
 } // class TBUtils

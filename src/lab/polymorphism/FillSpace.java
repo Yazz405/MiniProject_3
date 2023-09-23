@@ -1,47 +1,50 @@
 package lab.polymorphism;
 
-public class VerticallyFlipped implements TextBlock {
+public class FillSpace implements TextBlock {
     // +--------+------------------------------------------------------------
     // | Fields |
     // +--------+
 
-    TextBlock contents;
-    int current_height;
+    TextBlock block;
 
     // +--------------+------------------------------------------------------
     // | Constructors |
     // +--------------+
 
-    public VerticallyFlipped(TextBlock contents) {
+    public FillSpace(TextBlock block) {
 
-        this.contents = contents;
-        this.current_height = this.contents.height();
-    }// RightJustified(TextBlock)
+        this.block = block;
+    }// FillSpace(TextBlock)
 
     // +---------+-----------------------------------------------------------
     // | Methods |
     // +---------+
 
     public String row(int i) throws Exception {
+        char[] line = this.block.row(i).toCharArray();
 
-        String result = this.contents.row(this.contents.height() - 1 - i);
-        return result;
+        for (int j = 0; j < this.block.width(); j++) {
+            if (line[j] == ' ') {
+                line[j] = '*';
+            } // if
+        } // for
 
+        return new String(line);
     }// row(int)
 
     public int width() {
-        return this.contents.width();
+        return this.block.width();
     } // width()
 
     public int height() {
-        return this.contents.height();
+        return this.block.height();
     } // height()
 
     /*
-     * checks to see if other is the same type as VerticallyFlipped
+     * checks to see if other is the same type as FillSpace
      */
     public boolean eqv(TextBlock other) {
-        return other instanceof VerticallyFlipped;
+        return other instanceof FillSpace;
     }// eqv(TextBlock)
     
-}// class VerticallyFlipped
+}// class FillSpace

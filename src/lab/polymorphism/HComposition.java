@@ -86,4 +86,11 @@ public class HComposition implements TextBlock {
     return this.left.width() + this.right.width();
   } // width()
 
+  /*
+   * checks to see if other is the same type as HComposition
+   */
+  public boolean eqv(TextBlock other) {
+    return other instanceof HComposition;
+  }// eqv(TextBlock)
+
 } // class HComposition

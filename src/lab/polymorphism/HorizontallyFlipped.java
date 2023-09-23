@@ -1,6 +1,6 @@
 package lab.polymorphism;
 
-public class HorizontallyFlipped implements TextBlock{
+public class HorizontallyFlipped implements TextBlock {
     // +--------+------------------------------------------------------------
     // | Fields |
     // +--------+
@@ -11,33 +11,43 @@ public class HorizontallyFlipped implements TextBlock{
     // | Constructors |
     // +--------------+
 
-    public HorizontallyFlipped(TextBlock contents){
+    public HorizontallyFlipped(TextBlock contents) {
         this.contents = contents;
-        
-    }//HorizontallyJustified(TextBlock)
+
+    }// HorizontallyJustified(TextBlock)
 
     // +---------+-----------------------------------------------------------
     // | Methods |
     // +---------+
 
-    public String row(int i) throws Exception{
+    public String row(int i) throws Exception {
 
         char[] line = this.contents.row(i).toCharArray();
         char temp;
-        for(int j = 0; j < this.contents.height()/2; j++){
+        int changingWidth = this.contents.width() - 1;
+        for (int j = 0; j < (this.contents.width() / 2); j++) {
             temp = line[j];
-            line[j] = line [this.contents.width() - 1];
-            line[this.contents.width() - 1] = temp;
-        }//for
+            line[j] = line[changingWidth];
+            line[changingWidth] = temp;
+            changingWidth--;
+        } // for
 
         return new String(line);
-    }//row(int)
+    }// row(int)
 
     public int width() {
         return this.contents.width();
-     } // width()
- 
-     public int height() {
-         return this.contents.height();
-     } // height()
-}//class HorizontallyFlipped
+    } // width()
+
+    public int height() {
+        return this.contents.height();
+    } // height()
+
+    /*
+     * checks to see if other is the same type as HorizontallyFlipped
+     */
+    public boolean eqv(TextBlock other) {
+        return other instanceof HorizontallyFlipped;
+    }// eqv(TextBlock)
+    
+}// class HorizontallyFlipped
