@@ -1,47 +1,47 @@
 package lab.polymorphism;
 
 public class VerticallyFlipped implements TextBlock {
-    // +--------+------------------------------------------------------------
-    // | Fields |
-    // +--------+
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-    TextBlock contents;
-    int current_height;
+  TextBlock contents;
+  int current_height;
 
-    // +--------------+------------------------------------------------------
-    // | Constructors |
-    // +--------------+
+  // +--------------+------------------------------------------------------
+  // | Constructors |
+  // +--------------+
 
-    public VerticallyFlipped(TextBlock contents) {
+  public VerticallyFlipped(TextBlock contents) {
 
-        this.contents = contents;
-        this.current_height = this.contents.height();
-    }// RightJustified(TextBlock)
+    this.contents = contents;
+    this.current_height = this.contents.height();
+  }// RightJustified(TextBlock)
 
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
 
-    public String row(int i) throws Exception {
+  public String row(int i) throws Exception {
 
-        String result = this.contents.row(this.contents.height() - 1 - i);
-        return result;
+    String result = this.contents.row(this.contents.height() - 1 - i);
+    return result;
 
-    }// row(int)
+  }// row(int)
 
-    public int width() {
-        return this.contents.width();
-    } // width()
+  public int width() {
+    return this.contents.width();
+  } // width()
 
-    public int height() {
-        return this.contents.height();
-    } // height()
+  public int height() {
+    return this.contents.height();
+  } // height()
 
-    /*
-     * checks to see if other is the same type as VerticallyFlipped
-     */
-    public boolean eqv(TextBlock other) {
-        return other instanceof VerticallyFlipped;
-    }// eqv(TextBlock)
-    
+  /*
+   * checks to see if other is the same type as VerticallyFlipped
+   */
+  public boolean eqv(TextBlock other) {
+    return other instanceof VerticallyFlipped;
+  }// eqv(TextBlock)
+
 }// class VerticallyFlipped

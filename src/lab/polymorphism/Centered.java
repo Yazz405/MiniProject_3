@@ -2,65 +2,94 @@ package lab.polymorphism;
 
 import java.lang.String;
 
+/**
+ * A text block centered on a width.
+ *
+ * @author Alma Ordaz
+ */
+
 public class Centered implements TextBlock {
-    // +--------+------------------------------------------------------------
-    // | Fields |
-    // +--------+
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-    TextBlock block;
-    int width;
+  // the TextBlock that will be centered
+  TextBlock block;
 
-    // +--------------+------------------------------------------------------
-    // | Constructors |
-    // +--------------+
+  // the width we will use to center
+  int width;
 
-    public Centered(TextBlock block, int width) {
-        this.block = block;
-        this.width = width;
-    }// centered(Textblock, int)
+  // +--------------+------------------------------------------------------
+  // | Constructors |
+  // +--------------+
 
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+  // Build a new block that is centered along width
+  public Centered(TextBlock block, int width) {
+    this.block = block;
+    this.width = width;
+  }// centered(Textblock, int)
 
-    public String row(int i) throws Exception {
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
 
-        int start = this.width - this.block.width();
-        int spaces = start / 2;
-        String result;
+  /**
+   * Get one row from the block.
+   *
+   * @pre 0 <= i < this.height()
+   * @exception Exception if the precondition is not met
+   */
+  public String row(int i) throws Exception {
 
-        if (this.block.width() > this.width) {
-            TextBlock help = new Truncated(this.block, this.width);
-            return help.row(i);
-        } // if
-        else if ((start % 2) == 0) {
+    // the amount of total spaces
+    int start = this.width - this.block.width();
 
-            result = TBUtils.spaces(spaces);
-            result = result.concat(this.block.row(i));
-            result = result.concat(TBUtils.spaces(spaces));
-            return result;
-        } // else if
-        else {
-            result = TBUtils.spaces(spaces);
-            result = result.concat(this.block.row(i));
-            result = result.concat(TBUtils.spaces(spaces + 1));
-            return result;
-        } // else
-    }// row(int)
+    // the amount of spaces for one side of the block
+    int spaces = start / 2;
+    String result;
 
-    public int width() {
-        return this.width;
-    } // width()
+    // if the textblock is wider than the width we are using to center
+    if (this.block.width() > this.width) {
+      TextBlock help = new Truncated(this.block, this.width);
+      return help.row(i);
+    } // if
+    // if spaces can be divided equally both sides of the block will have equal
+    // amount of spaces
+    else if ((start % 2) == 0) {
 
-    public int height() {
-        return this.block.height();
-    } // height()
+      result = TBUtils.spaces(spaces);
+      result = result.concat(this.block.row(i));
+      result = result.concat(TBUtils.spaces(spaces));
+      return result;
+    } // else if
+    // if spaces are not even add one more space to the left of block
+    else {
+      result = TBUtils.spaces(spaces);
+      result = result.concat(this.block.row(i));
+      result = result.concat(TBUtils.spaces(spaces + 1));
+      return result;
+    } // else
+  }// row(int)
 
-    /*
-     * checks to see if other is the same type as Centered
-     */
-    public boolean eqv(TextBlock other) {
-        return other instanceof Centered;
-    }// eqv(TextBlock)
+  /*
+   * returns the width
+   */
+  public int width() {
+    return this.width;
+  } // width()
+
+  /*
+   * returns the height
+   */
+  public int height() {
+    return this.block.height();
+  } // height()
+
+  /*
+   * checks to see if other is the same type as Centered
+   */
+  public boolean eqv(TextBlock other) {
+    return other instanceof Centered;
+  }// eqv(TextBlock)
 
 }// class Centered

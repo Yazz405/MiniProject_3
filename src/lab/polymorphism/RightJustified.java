@@ -1,56 +1,56 @@
 package lab.polymorphism;
 
 public class RightJustified implements TextBlock {
-    // +--------+------------------------------------------------------------
-    // | Fields |
-    // +--------+
+  // +--------+------------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-    TextBlock block;
-    int width;
+  TextBlock block;
+  int width;
 
-    // +--------------+------------------------------------------------------
-    // | Constructors |
-    // +--------------+
+  // +--------------+------------------------------------------------------
+  // | Constructors |
+  // +--------------+
 
-    public RightJustified(TextBlock block, int width) {
+  public RightJustified(TextBlock block, int width) {
 
-        this.block = block;
-        this.width = width;
-    }// RightJustified(TextBlock, int)
+    this.block = block;
+    this.width = width;
+  }// RightJustified(TextBlock, int)
 
-    // +---------+-----------------------------------------------------------
-    // | Methods |
-    // +---------+
+  // +---------+-----------------------------------------------------------
+  // | Methods |
+  // +---------+
 
-    public String row(int i) throws Exception {
-        int spaces = this.width - this.block.width();
-        String result;
+  public String row(int i) throws Exception {
+    int spaces = this.width - this.block.width();
+    String result;
 
-        if (this.block.width() > this.width) {
-            TextBlock help = new Truncated(this.block, this.width);
-            return help.row(i);
-        } // if
-        else {
-            result = TBUtils.spaces(spaces).concat(this.block.row(i));
-        } // else
+    if (this.block.width() > this.width) {
+      TextBlock help = new Truncated(this.block, this.width);
+      return help.row(i);
+    } // if
+    else {
+      result = TBUtils.spaces(spaces).concat(this.block.row(i));
+    } // else
 
-        return result;
+    return result;
 
-    }// row(int)
+  }// row(int)
 
-    public int width() {
-        return this.width;
-    } // width()
+  public int width() {
+    return this.width;
+  } // width()
 
-    public int height() {
-        return this.block.height();
-    } // height()
+  public int height() {
+    return this.block.height();
+  } // height()
 
-    /*
-     * checks to see if other is the same type as RightJustified
-     */
-    public boolean eqv(TextBlock other) {
-        return other instanceof RightJustified;
-    }// eqv(TextBlock)
+  /*
+   * checks to see if other is the same type as RightJustified
+   */
+  public boolean eqv(TextBlock other) {
+    return other instanceof RightJustified;
+  }// eqv(TextBlock)
 
 }// class RightJustified
